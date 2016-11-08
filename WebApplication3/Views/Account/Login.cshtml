@@ -1,0 +1,19 @@
+﻿@model WebApplication3.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Вход";
+    Layout = null;
+}
+
+<div>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        <div>
+            Войти как:
+            @Html.TextBoxFor(model => model.Name)
+        </div>
+        <div>
+            <input type="submit" value="Войти"/>
+        </div>
+    }
+</div>
