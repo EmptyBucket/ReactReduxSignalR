@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import {connect} from "react-redux";
-import {bindActionsCreators} from "redux";
+import {bindActionCreators} from "redux";
 import * as ChatActions from "../Actions/ChatActions.js";
 import ReactCssTransitionGroup from "react-addons-css-transition-group";
 
@@ -39,7 +39,33 @@ class UsersList extends React.Component {
   }
 }
 
+class MessageSender extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { text: "" };
+    }
+    sendMessage() {
+        this.props.sendMessage(this.state.text);
+    }
+    textChange(event) {
+        this.setState({ text: event.target.value });
+    }
+    render() {
+        return (<div>
+            <div>
+                <input onChange={this.textChange.bind(this)} value={this.state.text} type="text"/>
+            </div>
+            <div>
+                <input type="submit" onClick={this.sendMessage.bind(this)}/>
+            </div>
+        </div>)
+    }
+}
+
 class Chat extends React.Component {
+    sendMessage(text) {
+        this.props.actions.sendMessage(text);
+    }
     render() {
         return (<div>
                     <div>
@@ -53,6 +79,9 @@ class Chat extends React.Component {
                         Список сообщения
                         <MessageList messages={this.props.messages}/>
                     </div>
+                    <div>
+                        <MessageSender sendMessage={this.sendMessage.bind(this)} />
+                    </div>
                 </div>);
     }
 }
@@ -61,14 +90,14 @@ function mapStateToProps(state) {
     return {
         users: state.Chat.connectedUsers,
         messages: [...state.Chat.receivedMessage, ...state.Chat.sendedMessage],
-        userName: userName
+        userName: state.Chat.userName
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionsCreators(Chat, dispatch)
+        actions: bindActionCreators(ChatActions, dispatch)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

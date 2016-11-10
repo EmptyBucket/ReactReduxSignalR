@@ -1,7 +1,7 @@
 ﻿import * as ActionTypes from "../ActionTypes.js"
 
 const initState = {
-    userName,
+    userName: "",
     receivedMessage: [],
     sendedMessage: [],
     connectedUsers: []

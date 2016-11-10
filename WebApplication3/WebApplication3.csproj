@@ -161,9 +161,14 @@
     <Content Include="App\Scripts\Chat\Reducers\ChatReducer.js" />
     <Content Include="App\Scripts\Chat\Reducers\index.js" />
     <Content Include="App\Scripts\Chat\signalrMiddleware.js" />
+    <Content Include="Bundles\chat-607f806af4b8868a0bf3.js" />
+    <Content Include="Bundles\common-1316c9cbd63f8f10a0a3.js" />
     <Content Include="Global.asax" />
+    <Content Include="webpack-assets.json" />
     <Content Include="webpack.config.js" />
     <Content Include="package.json" />
+    <Content Include="Bundles\chat-607f806af4b8868a0bf3.js.map" />
+    <Content Include="Bundles\common-1316c9cbd63f8f10a0a3.js.map" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
@@ -173,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AssetsProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,8 +202,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Scripts" />
-    <Folder Include="App\Scripts\Chat" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>

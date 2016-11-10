@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace WebApplication3
@@ -13,6 +9,7 @@ namespace WebApplication3
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            AssetsProvider.Bind(Server.MapPath("~/webpack-assets.json"));
         }
     }
 }

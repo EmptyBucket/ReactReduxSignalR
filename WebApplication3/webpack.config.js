@@ -20,7 +20,7 @@ console.log(Chalk.magenta(`Execute mode: ${NodeEnv}`));
 module.exports = {
     context: Path.join(__dirname, "app", "scripts"),
     entry: {
-        chat: "./Chat/index.jsx"
+        chat: "./Chat/index.js"
     },
     output: {
         path: Path.join(__dirname, "Bundles"),
@@ -40,14 +40,15 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.jsx$/,
-                loader: "babel?plugins=transform-runtime&presets[]=es2015&presets[]=react"
-            },
-            {
                 test: /\.js$/,
                 exclude: [/node_modules/],
-                loader: "babel?plugins=transform-runtime&presets[]=es2015"
+                loader: "babel?plugins=transform-runtime&presets[]=es2015&presets[]=react"
             },
+            // {
+            //     test: /\.js$/,
+            //     exclude: [/node_modules/],
+            //     loader: "babel?plugins=transform-runtime&presets[]=es2015"
+            // },
             {
                 test: /\.css$/,
                 loader: extractCss.extract("style", "css", "autoprefixer?browsers=last 2 version")
